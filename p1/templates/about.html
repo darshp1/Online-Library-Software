@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	{% if title %}
+		<title>Library - {{title}}</title>
+	{% else %}
+		<title>Library </title>
+
+	{% endif %}
+
+	 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/home.css') }}"> 
+	 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/all.min.css') }}"> 
+	 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/home1.css') }}">
+ 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/imge.css') }}">
+
+
+</head>
+<body>
+	<header>
+			<h2 class=logo>Library</h2>  <!-- <img src="" alt=Library_logo class=logo> -->
+			 <input type="checkbox" id="nav-toggle" class="nav-toggle">
+			<nav>
+				<ul>
+					<li><a href="" alt="Contact" > Contact </a></li>
+					
+					<li><a href=" "  alt="" > </a><i class="fas fa-search"></i> Search Books</li>
+					<li><a href="home" alt="Logout" > Logout</a></li>
+					<li><a href="" alt="Register" > Speech</a></li>
+				</ul>
+			</nav>
+			<label for="nav-toggle" class="nav-toggle-label">
+		    	<span></span>
+		 	</label>
+	</header>
+	<section> <br><br><br></section>
+<div class="content-section">
+	<center>
+	<br>
+	<br>
+	<fieldset>
+		<center><legend class="">Account Info</legend></center>
+		<br>
+	<div class="media">
+		<img class="article-img" src="{{image_file}}">
+			<h2>{{current_user.username}}</h2>
+			<p class="">{{current_user.email}}</p>
+		
+		
+	</div>
+	<fieldset>
+	<div class="">
+	<form class="form" method="POST" enctype="multipart/form-data" action="">
+      {{form.hidden_tag()}}
+      
+         <div class="">
+        {{form.username.label(class="")}}
+          <span class="">?</span><br>
+        {% if form.username.errors %}
+          {{ form.username(class="")}}
+          <div class="">
+            {% for errors in form.username.errors %}
+              <span>
+                {{errors}}
+              </span>
+              {% endfor %}
+          </div>
+          {% else %}
+              {{form.username(class="")}}
+        {% endif %}
+        
+      </div>
+<br>
+      <div class="">
+        {{form.email.label(class="")}}
+         <span class="">?</span><br>
+        {% if form.email.errors %}
+          {{ form.email(class="")}}
+          <div class="">
+            {% for errors in form.email.errors %}
+              <span>
+                {{errors}}
+              </span>
+              {% endfor %}
+          </div>
+          {% else %}
+              {{form.email(class="")}}
+        {% endif %}
+        
+      </div>
+      <br>
+      <div class="">
+            {{form.picture.label(class="")}}
+            <br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+             {{form.picture(class="form-control-file")}}
+	         {% if form.picture.errors %}
+	            {% for errors in form.picture.errors %}
+	              <span>
+	              	<br>
+	              	<font size="2" color="red">
+	                {{errors}}
+	                </font>
+	              </span>
+	              {% endfor %}
+	        {% endif %}
+        </div>
+      <br>
+      <br>
+      <div class="form-group">
+        {{form.submit(class="button")}}
+      </div>
+      </form>
+</div>
+</fieldset>
+</fieldset>
+</center>
+	</div>
+		
+
+
+	
+	{% with messages = get_flashed_messages() %}
+  {% if messages %}
+  		{% for  message in messages %}
+		<div class="alert alert-{{ message }}\">
+			{{message}}
+		</div>
+    {% endfor %}
+			
+	  	
+   
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+
+
+
+
+</body>
+</html>
+

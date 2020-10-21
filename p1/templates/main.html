@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	{% if title %}
+		<title>Library - {{title}}</title>
+	{% else %}
+		<title>Library </title>
+
+	{% endif %}
+
+	 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/home.css') }}"> 
+	 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/all.min.css') }}"> 
+	 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/home1.css') }}">
+ 
+
+</head>
+<body>
+	<header>
+			<h2 class=logo>Library</h2>  <!-- <img src="" alt=Library_logo class=logo> -->
+			 <input type="checkbox" id="nav-toggle" class="nav-toggle">
+			<nav>
+				<ul>
+					<li><a href="admin" alt="admin" > admin </a></li>
+					<li><a href="about" alt="About" > About   </a></li>
+					<li><a href="Search_Book"  alt="Search" >Search Books   </a></li>
+					{% if current_user.is_authenticated %}
+					<li><a href="logout" alt="logout">Logout</a></li>
+					{% else %}
+					<li><a href="login" alt="Login" > Login</a></li>
+					<li><a href="sign_up" alt="Register" > Register</a></li>
+					{% endif %}
+				</ul>
+			</nav>
+			<label for="nav-toggle" class="nav-toggle-label">
+		    	<span></span>
+		 	</label>
+	</header>
+
+
+	<div > 
+		<section><pre>
+			
+
+
+		</pre></section>
+		<center>
+		<section>{% block content %}  {% endblock content %}</section>	
+	</div>
+	
+	{% with messages = get_flashed_messages() %}
+  {% if messages %}
+  		{% for  message in messages %}
+		<div class="alert alert-{{ message }}\">
+			{{message}}
+		</div>
+    {% endfor %}
+			</center>
+	  	
+   
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+
+
+
+
+
+</body>
+</html>
+

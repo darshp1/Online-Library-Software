@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+   
+
+
+    {% if title %}
+		<title>Library - {{title}}</title>
+	{% else %}
+		<title>Library </title>
+	{% endif %}
+ 
+	 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}"> 
+  </head>
+
+  <body>
+<div class="d">
+  	 {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      {% for  message in messages %}
+    <div class="alert alert-{{ message }}\">
+      {{message}}
+    </div>
+    {% endfor %}      
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+</div>
+<form class="form" method="POST" action="">
+      {{form.hidden_tag()}}
+		<div class="login-box">
+		  <h1>Login</h1>
+		  <div class="textbox">
+		    <i class="fas fa-user"></i>
+		    {% if form.email.errors %}
+          {{ form.email(class="text is-invalid ")}}
+          <div class="invalid-feedback">
+            {% for errors in form.email.errors %}
+              <span>
+                {{errors}}
+              </span>
+              {% endfor %}
+          </div>
+          {% else %}
+              {{form.email(class="text" ,placeholder="Enter your Email ID")}}
+        {% endif %}
+		    
+		  </div>
+
+		  <div class="textbox">
+		    <i class="fas fa-lock"></i>
+		    {% if form.password.errors %}
+          {{ form.password(class="password is-invalid ")}}
+          <div class="invalid-feedback">
+            {% for errors in form.password.errors %}
+              <span>
+                {{errors}}
+              </span>
+              {% endfor %}
+          </div>
+          {% else %}
+              {{form.password(class="password", placeholder="Password")}}
+        {% endif %}
+		  </div>
+		{{form.submit(class="button", class="btn" , value="Sign in")}}
+		  <a href="/login" class="textbox" >Remember me</a>
+    </div>
+  </form>
+		</div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+	.mobile-menu-header {
+		width: 100%;
+	}
+	h1.page_header {
+		line-height: 55px;
+		background-position: 68px 20px;
+		background-size: 40px auto;
+		width: 120px;
+		font-size: 32px;
+		width: 90%;
+	}
+	h1.page_header {
+		float: none;
+	}
+	.mobile {
+	display: none;
+	}
+
+	#mobile-menu-button {
+		text-indent: -9999px;
+		display: block;
+		height: 60px;
+		width: 60px;
+		background: url(../images/menu-icon.svg) no-repeat center center;
+		background-size: 30px auto;
+		position: absolute;
+		right: 0;
+		top: 0px;
+		border-bottom: none;
+	}
+
+	#mobile-menu-button:active {
+		opacity: 0.5;
+	}
+	.hide-mobile {
+		display: none;
+	}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+body
+{
+	background-color: rgba(255,0,0,0.3)
+}
+</style>
+<body>
+	<form method="POST" action="">
+		Number:
+		<input type="text" name="un">
+		<br>
+		<input type="submit" value="press to send message">
+		<br>
+		<input type="submit" value="press to enter bookname and user who borrowed it">
+	</form>
+	{% if phone!=None %}
+	your massage will sent on 	{{phone}} soon
+	{%endif%}
+</body>
+</html>

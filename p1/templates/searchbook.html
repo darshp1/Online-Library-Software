@@ -1,0 +1,60 @@
+{%  extends "main.html" %}
+
+{% block content %}
+<style>
+	body
+	{
+		background-color: rgba(255,0,0,0.3)
+	}
+	</style>
+ <form id="form1" action="" method="POST" enctype="multipart/form-data">
+ 		Enter Bookname:
+		<input type="textbox" name="jd">
+		<br>
+		<br>
+		<br>
+ 	 {% if bname!=None %}
+          
+          </div>
+          <select  name="searchbooks">
+         	{% for colour in colours %}
+    			<option value= "{{colour.book_name}}" >{{colour.book_name}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsptotal available now={{colour.available}}</option>"
+   			{% endfor %}
+         </select>
+         
+
+ 	
+ 	{% else %}
+		<select id="myselect" name="searchbooks">
+		  <option id=1 value="Harry Potter and the philosophers stone">Harry Potter and the philosophers stone</option>
+		  <option id=2 value="Twilight">Twilight</option>
+		  <option id=3 value="PS:i love u">PS:i love u</option>
+		  <option id=4 value="100">100</option>
+		</select>
+	{% endif %}
+
+<input type=submit value=search name=Search>
+
+</form>
+
+
+
+<div id="result">
+
+	<br><br>
+	Ratting is:
+	{{description}}<br>
+	<br>
+	<br>
+	for more information please open the page you are redirected to
+
+		
+	</form>
+	<br>
+
+</div>
+
+
+
+
+{% endblock content %}

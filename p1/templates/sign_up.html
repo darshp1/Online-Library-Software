@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+      {% for  message in messages %}
+    <div class="alert alert-{{ message }}\">
+      {{message}}
+    </div>
+    {% endfor %}      
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+
+
+  {% if title %}
+    <title>Library - {{title}}</title>
+  {% else %}
+    <title>Library </title>
+  {% endif %}
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/signup.css') }}"> 
+</head>
+<body> 
+<div class="steam-signup-form">
+  <div class="front">
+
+    <img src="{{url_for('static', filename='lib_logo.png')}}" />
+    <h1 class="title">Create your account</h1>
+    <p>The ulimate Library</p>
+    <p> Easy and Fast book search </p>
+    <p><strong>It's free to join and easy to use.</strong></p>
+    
+    <form class="form" method="POST" action="">
+      {{form.hidden_tag()}}
+      
+         <div class="form-group">
+        {{form.username.label(class="form-control-label")}}
+          <span class="form__tooltip">?</span><br>
+        {% if form.username.errors %}
+          {{ form.username(class="form__text is-invalid ")}}
+          <div class="invalid-feedback">
+            {% for errors in form.username.errors %}
+              <span>
+                {{errors}}
+              </span>
+              {% endfor %}
+          </div>
+          {% else %}
+              {{form.username(class="form__text")}}
+        {% endif %}
+        
+      </div>
+
+      <div class="form-group">
+        {{form.email.label(class="form-control-label")}}
+         <span class="form__tooltip">?</span><br>
+        {% if form.email.errors %}
+          {{ form.email(class="form__text is-invalid ")}}
+          <div class="invalid-feedback">
+            {% for errors in form.email.errors %}
+              <span>
+                {{errors}}
+              </span>
+              {% endfor %}
+          </div>
+          {% else %}
+              {{form.email(class="form__text")}}
+        {% endif %}
+        
+      </div>
+
+       <div class="form-group">
+        {{form.phone.label(class="form-control-label")}}
+          <span class="form__tooltip">?</span><br>
+        {% if form.phone.errors %}
+          {{ form.phone(class="form__text is-invalid ")}}
+          <div class="invalid-feedback">
+            {% for errors in form.phone.errors %}
+              <span>
+              Your number must have 10 digits
+              </span>
+              {% endfor %}
+          </div>
+          {% else %}
+              {{form.phone(class="form__text")}}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{form.password.label(class="form-control-label")}}
+         <span class="form__tooltip">?</span><br>
+
+        {% if form.password.errors %}
+          {{ form.password(class="form__text is-invalid ")}}
+          <div class="invalid-feedback">
+            {% for errors in form.password.errors %}
+              <span>
+                {{errors}}
+              </span>
+              {% endfor %}
+          </div>
+          {% else %}
+              {{form.password(class="form__text")}}
+        {% endif %}
+        
+      </div>
+
+    <div class="form-group">
+        {{form.confirm_password.label(class="form-control-label")}}
+         <span class="form__tooltip">?</span><br>
+
+        {% if form.confirm_password.errors %}
+          {{ form.confirm_password(class="form__text is-invalid ")}}
+          <div class="invalid-feedback">
+            {% for errors in form.confirm_password.errors %}
+              <span>
+                {{errors}}
+              </span>
+              {% endfor %}
+          </div>
+          {% else %}
+              {{form.confirm_password(class="form__text")}}
+        {% endif %}
+        
+      </div>
+ <p class="fineprint flex-center">
+        <input class="form__checkbox" type="checkbox" id="agreement" name="agreement" required="required">
+        <label for="agreement" >I am student of the Charusat university Depstar<a href="#">terms and serivces</a>.</label>
+
+      <div class="form-group">
+        {{form.submit(class="button")}}
+        
+      </div>
+
+     
+      </p>
+      <a href="/login" class="fineprint" >I already have an account</a>      
+    </form>
+    
+
+  
+  <div class="back">
+    <h2 class="subheading">Why join library?</h2>
+    <ul class="list list--unstyled">
+      <li>Know which Books are there in library</li>
+      <li>Get detailed Information on books</li>
+      <li>Check which Books will be available in comming days</li>
+      <li>Easy to find Book</li>
+      <li>Consumes Less Time to find Book</li>
+      <li>Receive automatic reminder for the Bokk to return</li>
+      <li>Say and Find the Books</li>
+    </ul>
+  </div>
+  
+</div>
+
+
+
+</body>
+</html>
